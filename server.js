@@ -2,7 +2,8 @@
 
 const restify = require('restify');
 const bodyParser = require('body-parser');
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
+const corsMiddleWare = require('restify-cors-middleware');
 
 /*
 / Menentukan Nama Server Dan Versi Server
@@ -12,14 +13,16 @@ const server = restify.createServer({
     version: '1.0.0'
 });
 
-server.use(bodyParser.json());
+server.use(restify.plugins.bodyParser());
 
-server.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS, PUT");
-    next();
+const cors = corsMiddleWare({
+    origins: ['*'],
+    allowHeaders: ['X-App-Version'],
+    exposeHeaders: []
 });
+
+server.pre(cors.preflight);
+server.use(cors.actual);
 
 server.get('/', (req, res, next) => {
     var html = '<html><head><title>Some Title</title></head><body><h1>LiveCode</h1></body></html>';

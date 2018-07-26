@@ -10,7 +10,7 @@
     "type": "git",
     "url": "https://github.com/WildanBalfas/XAPIs.git"
   },
-  "author": "Ramadhoni Suryo",
+  "author": "Wildan",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/WildanBalfas/XAPIs/issues"
@@ -23,7 +23,8 @@
     "mongodb": "^3.1.1",
     "mongoose": "^5.2.4",
     "mongoose-timestamp": "^0.6.0",
-    "restify": "^7.2.1"
+    "restify": "^7.2.1",
+    "restify-cors-middleware": "^1.1.1"
   },
   "devDependencies": {
     "nodemon": "^1.18.2"
