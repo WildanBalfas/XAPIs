@@ -53,6 +53,24 @@ module.exports = exports = function (server, name) {
         });
     });
 
+    // server.put(route + '/:id', (req, res, next) => {
+    //     console.log(req.method);
+    //     MongoClient.connect(config.dbconn, async function (err, db) {
+    //         if (err) throw err;
+    //         let id = req.params.id;
+    //         let entity = req.body;
+    //         converToObjectId(entity);
+    //         TimeStamp(entity, req);
+
+    //         dbo = db.db(config.dbname);
+    //         await dbo.collection(name).findOneAndUpdate({ '_id': ObjectId(id) }, entity, function (err, response) {
+    //             if (err) throw err;
+    //             res.send(200, response);
+    //             db.close();
+    //         });
+    //     });
+    // });
+
     server.put(route + '/:id', (req, res, next) => {
         console.log(req.method);
         MongoClient.connect(config.dbconn, async function (err, db) {
@@ -61,9 +79,9 @@ module.exports = exports = function (server, name) {
             let entity = req.body;
             converToObjectId(entity);
             TimeStamp(entity, req);
-
+            
             dbo = db.db(config.dbname);
-            await dbo.collection(name).findOneAndUpdate({ '_id': ObjectId(id) }, entity, function (err, response) {
+            await dbo.collection(name).findOneAndUpdate({ '_id': ObjectId(id) }, {$set: entity}, function (err, response) {
                 if (err) throw err;
                 res.send(200, response);
                 db.close();
