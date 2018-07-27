@@ -4,7 +4,7 @@ const MongoClient = require('mongodb').MongoClient;
 const templateCtrl = require('./template.controller');
 
 module.exports = exports = function (server) {
-    let name = 'users';
+    let name = 'products';
     let dbo;
 
     templateCtrl(server, name);
@@ -23,6 +23,7 @@ module.exports = exports = function (server) {
                             "price": 1,
                             "_id": 1,
                             "categoryId": 1,
+                            "active":1,
                             "category.initial": 1,
                             "category.name": 1
                         }

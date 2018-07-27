@@ -53,48 +53,50 @@ require('./components/controllers/template.controller')(server, 'test');
 require('./components/controllers/users.controller')(server);
 //categories
 require('./components/controllers/template.controller')(server, 'categories');
+//tables
+require('./components/controllers/template.controller')(server, 'tables');
 //products
 require('./components/controllers/products.controller')(server);
 //product insert
-require('./components/controllers/template.controller')(server, 'products');
+// require('./components/controllers/template.controller')(server, 'products');
 
 global.config = require('./components/configurations/config');
 
-server.get('/api', (res) => {
-    res.json({
-       message: 'Welcome'
-    });
-});
+// server.get('/api', (res) => {
+//     res.json({
+//        message: 'Welcome'
+//     });
+// });
 
-server.post('/api/posts', verifyToken, (req, res, next) => {
+// server.post('/api/posts', verifyToken, (req, res, next) => {
 
-   jwt.verify(req.token, 'secretkey', (err, authData) => {
-       if(err){
-           return next(new Error(err));
-       }else{
-           res.json({
-               message: 'Post Created',
-               authData
-            });
-       }
-   });
+//    jwt.verify(req.token, 'secretkey', (err, authData) => {
+//        if(err){
+//            return next(new Error(err));
+//        }else{
+//            res.json({
+//                message: 'Post Created',
+//                authData
+//             });
+//        }
+//    });
    
-});
+// });
 
-server.get('/api/posts', verifyToken, (req, res, next) => {
+// server.get('/api/posts', verifyToken, (req, res, next) => {
 
-   jwt.verify(req.token, 'secretkey', (err, authData) => {
-       if(err){
-           return next(new Error(err));
-       }else{
-           res.json({
-               message: 'Post Created',
-               authData
-            });
-       }
-   });
+//    jwt.verify(req.token, 'secretkey', (err, authData) => {
+//        if(err){
+//            return next(new Error(err));
+//        }else{
+//            res.json({
+//                message: 'Post Created',
+//                authData
+//             });
+//        }
+//    });
    
-});
+// });
 
 // server.post('/api/login', (req, res, next) => {
 //    const user = {
@@ -114,28 +116,28 @@ server.get('/api/posts', verifyToken, (req, res, next) => {
 * Authorization: Bearer <access_token>
 * Verify Tokens
 */
-function verifyToken(req, res, next){
-   /**
-    * Get auth header value
-    */
-   const bearerHeader = req.headers['authorization'];
-   // Check if bearer is undefined
-   if(typeof bearerHeader !== 'undefined'){
-       // Split at the space
-       const bearer = bearerHeader.split(' ');
-       // Get token from array
-       const bearerToken = bearer[1];
-       // set the token
-       req.token = bearerToken;
-       // Next middleware
-       next();
-   }else{
-       // FOrbidden
-       res.json({
-           message: 'forbidden'
-       });
-   }
-}
+// function verifyToken(req, res, next){
+//    /**
+//     * Get auth header value
+//     */
+//    const bearerHeader = req.headers['authorization'];
+//    // Check if bearer is undefined
+//    if(typeof bearerHeader !== 'undefined'){
+//        // Split at the space
+//        const bearer = bearerHeader.split(' ');
+//        // Get token from array
+//        const bearerToken = bearer[1];
+//        // set the token
+//        req.token = bearerToken;
+//        // Next middleware
+//        next();
+//    }else{
+//        // FOrbidden
+//        res.json({
+//            message: 'forbidden'
+//        });
+//    }
+// }
 
 server.listen(config.port, function () {
     console.log('%s listen at %s', server.name, server.url);
