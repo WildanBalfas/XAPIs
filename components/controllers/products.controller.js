@@ -9,7 +9,7 @@ module.exports = exports = function (server) {
 
     templateCtrl(server, name);
 
-    server.post('/api/productscategory', (req, res, next) => {
+    server.get('/api/productscategory', (req, res, next) => {
         MongoClient.connect(config.dbconn, function (err, db) {
             if (err) throw err;
             dbo = db.db(config.myDB);
