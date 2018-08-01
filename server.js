@@ -55,9 +55,11 @@ require('./components/controllers/users.controller')(server);
 require('./components/controllers/template.controller')(server, 'categories');
 //tables
 require('./components/controllers/template.controller')(server, 'tables');
+//orders
+require('./components/controllers/template.controller')(server, 'orders');
 //products
 require('./components/controllers/products.controller')(server);
-//product insert
+//product insertS
 // require('./components/controllers/template.controller')(server, 'products');
 
 global.config = require('./components/configurations/config');
