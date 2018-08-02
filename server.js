@@ -57,6 +57,8 @@ require('./components/controllers/template.controller')(server, 'categories');
 require('./components/controllers/template.controller')(server, 'tables');
 //orders
 require('./components/controllers/template.controller')(server, 'orders');
+//reserv
+require('./components/controllers/template.controller')(server, 'reservations');
 //products
 require('./components/controllers/products.controller')(server);
 //product insertS
