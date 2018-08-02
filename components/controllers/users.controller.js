@@ -1,7 +1,7 @@
 'use strict';
 
 const MongoClient = require('mongodb').MongoClient;
-const templateCtrl = require('../base/convertToObjectId');
+const templateCtrl = require('../controllers/template.controller');
 
 module.exports = exports = function(server){
     let name = 'users';
